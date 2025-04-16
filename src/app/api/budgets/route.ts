@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Budget from '@/models/Budget';
+import Category from '@/models/Category';
 
 export async function GET(request: Request) {
   try {
