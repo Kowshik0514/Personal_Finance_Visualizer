@@ -2,10 +2,12 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Budget from '@/models/Budget';
 import Category from '@/models/Category';
+import mongoose from 'mongoose';
 
 export async function GET(request: Request) {
   try {
     await connectDB();
+    const Category = mongoose.models.Category || (await import('@/models/Category')).default;
     const { searchParams } = new URL(request.url);
     const month = searchParams.get('month');
 
